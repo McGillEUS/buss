@@ -1,54 +1,283 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>BUSS Events</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events - McGill BioEngineering Students' Society</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            <img
+              src="img/BUSS-Crest.svg"
+              style="height: 100px"
+              class="responsive"
+            />
+            <img
+              src="img/BUSS-Logo.svg"
+              style="width: 100px; height: 100px"
+              class="responsive"
+            />
+          </span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="council.html">Council</a>
+            </li>
 
-  <div class="page-wrap">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Resources
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a
+                  class="dropdown-item"
+                  href="https://drive.google.com/file/d/17HVtnoPWj_0WoyVrjVng5ag5OF-lAIxV/view?usp=sharing "
+                  >Guidebook</a
+                >
+                <a class="dropdown-item" href="resources.html">Academic</a>
+                <a class="dropdown-item" href="mental.html">Mental Health</a>
+              </div>
+            </li>
 
-    <nav class="mobile-nav">
-	<ul>
-		<li><a href="about.html">About</a></li>
-		<li><a href="events.html">Events</a></li>
-		<li><a href="contact.html">Contact</a></li>
-	</ul>
-</nav>
+            <li class="nav-item">
+              <a class="nav-link" href="Events.html">Events</a>
+            </li>
 
-<header>
+            <li class="nav-item">
+              <a class="nav-link" href="Getting Involved.html">
+                Getting Involved
+              </a>
+            </li>
 
-	<img class="header-logo" src="../assets/img/BUSS-Logo-noBG.svg"></img>
+            <li class="nav-item">
+              <a class="nav-link" href="Internships.html"> Opportunities </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-	<nav class="home-nav">
-		<ul>
-			<li><a href="about.html">About</a></li>
-			<li><a href="events.html">Events</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</nav>
+    <!-- Title -->
+    <div class="container fluid">
+      <div class="row text-center welcome">
+        <div class="col-md-12">
+          <h1>CBioEng Events</h1>
+          <div class="container-fluid padding" id="calendar">
+            <div class="col-md-12 col-lg-12">
+              <center>
+                <h1><b> Upcoming Events </b></h1>
+                <iframe
+                  src="https://calendar.google.com/calendar/embed?src=mcgilleus.ca_dmb58tvdqta3udepn31sa7o1ac%40group.calendar.google.com&ctz=America%2FToronto"
+                  style="border-width: 0"
+                  width="100%"
+                  height="600"
+                  frameborder="0"
+                  height
+                ></iframe>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="mobile-nav-toggle">
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
+    <hr width="75%" />
 
-</header>
+    <div class="container-fluid padding" id="calendar">
+      <div class="col-md-12 col-lg-12">
+        <center>
+          <h1><b> Our Favorites </b></h1>
+        </center>
+      </div>
+    </div>
 
+    <div class="container fluid">
+      <div class="row padding">
+        <div class="col-md-6 text-center">
+          <img src="img/Website Photos/Banquet.JPG" class="img-fluid" />
+        </div>
+        <div class="col-md-6 padding">
+          <h2>Banquet</h2>
+          <p>
+            Before the end of each semester, bioengineering students dress up in
+            their finest attire and get together to eat and drink. Its a way of
+            celebrating the end of the semester and realizing that we are almost
+            done. Afterwards, students have the option of joining other
+            departments at an EUS wide afterparty.
+          </p>
+          <div>
+            <div class="icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <hr width="75%" />
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous">
-</script>
-<script src = "assets/js/global.js"></script>
+    <div class="container fluid">
+      <div class="row padding">
+        <div class="col-md-6 padding">
+          <h2>Lab Tours</h2>
+          <p></p>
+          <div class="icon">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
 
-  
+    <hr width="75%" />
+
+    <div class="container fluid">
+      <div class="row padding">
+        <div class="col-md-6 text-center">
+          <img src="img/Website Photos/buss ride.JPG" class="img-fluid" />
+        </div>
+        <div class="col-md-6 padding">
+          <h2>BUSS Ride</h2>
+          <p>
+            A multi-day trip to another city to explore a biotech center outside
+            of Montreal. Includes industry tours, lab tours, visits with
+            bioengineering students from other schools, and lots of bonding with
+            the department!
+          </p>
+          <div>
+            <div class="icon">
+              <i class="fa-solid fa-bus-school"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr width="75%" />
+
+    <div class="container fluid">
+      <div class="row padding">
+        <div class="col-md-6 padding">
+          <h2>E-Week</h2>
+          <p>
+            E-week is an EUS wide event that takes place the first week of
+            winter semester. It is sort of like a winter frosh for engineers.
+            All engineering departments are at war with each other and
+            participate in fun events and challenges. At the end, only one
+            department will win. Will this be BUSS's year?
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="icon">
+            <i class="fas fa-beer"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr width="75%" />
+
+    <div class="container fluid">
+      <div class="row padding">
+        <div class="col-md-6 text-center">
+          <div class="icon">
+            <i class="fa-solid fa-camera-web"></i>
+          </div>
+        </div>
+        <div class="col-md-6 padding">
+          <h2>CUBEC</h2>
+          <p>
+            The Canadian Undergraduate Biomedical Engineering Conference (CUBEC)
+            was founded by BUSS in 2020, and it is the first large-scale event
+            dedicated to connecting undergraduate biomedical engineering
+            students across Canada. The biomedical engineering discipline in
+            itself is a relatively new field that is full of exciting
+            opportunities and boasts a large variety of career options in
+            academia and industry. Students in biomedical engineering have a
+            plethora of potential career paths to follow post-graduation. Yet,
+            many students feel that they lack knowledge about what these
+            opportunities may be and how one could become involved. CUBEC aims
+            to bridge this gap by providing a platform for various academic
+            research groups, industry leaders, and start-up companies to
+            highlight what they do such that these students are provided with
+            the necessary knowledge about potential career paths.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--- Footer -->
+    <footer>
+      <div class="container-fluid padding">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <p></p>
+            <img
+              src="img/BUSS-Crest.svg"
+              width="50%"
+              height="auto"
+              style="filter: grayscale(100%)"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <p></p>
+            <p>McGill BioEngineering Undergraduate Society</p>
+            <hr class="light" />
+            <p>buss.vpcomm@mcgilleus.ca</p>
+          </div>
+
+          <div class="col-md-4">
+            <p></p>
+            <img
+              src="img/BUSS-Crest.svg"
+              width="50%"
+              height="auto"
+              style="filter: grayscale(100%)"
+            />
+          </div>
+          <!---
+                    <p align=right style= "font-size:60%">Designed by President <a href=https://www.linkedin.com/in/ameer-nizami-5b6184107/> Ameer </a> 2017-2018</p>
+                    --->
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
