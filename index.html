@@ -1,218 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>McGill Bioengineering Undergraduate Students' Society</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-        <link href="style.css" rel="stylesheet">
-    </head>
-    <body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BUSS | Bioengineering Undergraduate Student Society</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d42e12;
+    --red-dark: #aa250d;
+    --red-tint: #fdeeeb;
+    --ink: #1c1c1c;
+    --ink-soft: #5b5b5b;
+    --line: #eadedb;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"> 
-                    <span>
-                        <img src = "img/BUSS-Crest.svg" style = "height: 100px;" class= "responsive">
-                        <img src = "img/BUSS-Logo.svg" style = "width: 100px; height: 100px;" class= "responsive">
+  /* ---------- Navbar ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav {
+    max-width: 1200px; margin: 0 auto; padding: .7rem 1.5rem;
+    display: flex; align-items: center; justify-content: center; gap: 2.2rem; flex-wrap: wrap;
+  }
+  .logo {
+    display: flex; align-items: center; gap: .55rem;
+    font-weight: 800; font-size: 1.25rem; letter-spacing: .04em; color: var(--red);
+  }
+  .logo svg { width: 30px; height: 30px; }
+  .links { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+  .links > a, .dropdown > a { font-weight: 500; font-size: .98rem; padding: .35rem 0; position: relative; }
+  .links > a::after, .dropdown > a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  }
+  .links > a:hover::after, .dropdown > a:hover::after { transform: scaleX(1); }
+  .links > a:hover, .dropdown > a:hover { color: var(--red); }
 
-                    </span>
-                  
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarResponsive">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home</a> </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="council.html">Council</a> </li>
-                        
-                        <li class="nav-item dropdown"> 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Resources
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="https://drive.google.com/file/d/17HVtnoPWj_0WoyVrjVng5ag5OF-lAIxV/view?usp=sharing">Guidebook</a>
-                                <a class="dropdown-item" href="resources.html">Academic</a>
-                                <a class="dropdown-item" href="mental.html">Mental Health</a>
-                            </div>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="events.html">Events</a> </li>
-                        
-                        <li class="nav-item"> 
-                            <a class="nav-link" href="Getting Involved.html">
-                                Getting Involved
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">	
-                            <a class="nav-link" href="Internships.html"> Opportunities </a> </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
-        <style>
-            /* Add a style block for custom CSS */
-            header {
-                text-align: center;
-                padding: 20px 0;
-            }
-            h1 {
+  .dropdown { position: relative; }
+  .menu {
+    position: absolute; top: 100%; left: -1rem; min-width: 190px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.1); padding: .5rem;
+    opacity: 0; visibility: hidden; transform: translateY(6px); transition: all .2s ease;
+  }
+  .dropdown:hover .menu, .dropdown:focus-within .menu { opacity: 1; visibility: visible; transform: none; }
+  .menu a { display: block; padding: .5rem .8rem; border-radius: 8px; font-size: .95rem; }
+  .menu a:hover { background: var(--red-tint); color: var(--red); }
 
-                font-size: 2em;
-                font-weight: bold;
-            }
-        </style>
-        <header>
-            <div class="container-fluid text-center">
-                <h1 class="display-4">McGill Bioengineering Undergraduate Students' Society</h1>
-            </div>
-        </header>
-        
-        <!--- Image Slider -->
-    <div id="slides" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <!-- Change the value of src below to the new path or URL of your image -->
-                <img src="img/Website Photos/Council 24-25.jpg">
-                <div class="carousel-caption">
-                </div>
-            </div>
+  /* ---------- Announcement banner ---------- */
+  .banner {
+    background: var(--red-tint); color: var(--red-dark);
+    text-align: center; font-weight: 500; padding: .7rem 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero-wrap { position: relative; overflow: hidden; }
+  .doodle { position: absolute; color: var(--red); opacity: .09; pointer-events: none; }
+  .d1 { top: 40px; left: 3%; width: 110px; transform: rotate(-12deg); }
+  .d2 { top: 28%; left: 44%; width: 70px; transform: rotate(10deg); }
+  .d3 { bottom: 30px; right: 3%; width: 120px; transform: rotate(14deg); }
+  .d4 { bottom: 40px; left: 2%; width: 80px; }
+
+  .hero {
+    position: relative;
+    max-width: 1200px; margin: 0 auto; padding: 4.5rem 1.5rem 5rem;
+    display: grid; grid-template-columns: 1fr 1.25fr; gap: 3.5rem; align-items: center;
+  }
+  h1 {
+    font-size: clamp(3.2rem, 8vw, 6rem); line-height: .98; margin: 0 0 1.6rem;
+    font-weight: 800; letter-spacing: -.02em;
+  }
+  h1 span { color: var(--red); display: block; }
+  .intro { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2.2rem; max-width: 34em; }
+  .intro strong { color: var(--ink); font-weight: 600; }
+
+  h2.label {
+    display: inline-block; font-size: 1.1rem; font-weight: 600; margin: 0 0 1rem;
+    padding-bottom: .25rem; border-bottom: 3px solid var(--red);
+  }
+  .resources { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; max-width: 480px; }
+  .resources a {
+    background: var(--red); color: #fff; font-weight: 500; text-align: center;
+    padding: 1.25rem .9rem; border-radius: 12px; line-height: 1.3;
+    display: flex; align-items: center; justify-content: center; min-height: 82px;
+    transition: transform .18s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .resources a:hover { background: var(--red-dark); transform: translateY(-3px); box-shadow: 0 10px 22px rgba(212,46,18,.28); }
+
+  .photo {
+    position: relative; aspect-ratio: 3 / 2; border-radius: 26px; overflow: hidden;
+    border: 3px solid var(--red-tint);
+    box-shadow: 0 24px 50px rgba(212,46,18,.14), 0 4px 14px rgba(0,0,0,.08);
+    background: linear-gradient(135deg, #fff1ee, #fbd9d2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--red-dark); text-align: center; padding: 1rem; font-weight: 500;
+  }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- What we do ---------- */
+  .what { background: #fff; border-top: 1px solid var(--line); }
+  .what-inner { max-width: 1200px; margin: 0 auto; padding: 4.5rem 1.5rem; }
+  .what h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 .4rem; font-weight: 700; letter-spacing: -.01em; }
+  .what h2::after { content: ""; display: block; width: 56px; height: 4px; background: var(--red); border-radius: 2px; margin-top: .7rem; }
+  .what p.sub { color: var(--ink-soft); margin: 1rem 0 2.2rem; max-width: 40em; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+  .card {
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(212,46,18,.1); }
+  .card h3 { margin: 0 0 .4rem; font-size: 1.15rem; color: var(--red); }
+  .card p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+
+  /* ---------- Footer ---------- */
+  footer { background: #231b1a; color: #d8cfcd; }
+  .foot { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .foot .logo { color: #fff; }
+  .foot nav { padding: 0; gap: 1.4rem; justify-content: flex-end; }
+  .foot a:hover { color: #ff9a8a; }
+  .copy { text-align: center; font-size: .85rem; padding: 0 1rem 1.6rem; color: #a99d9a; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 3rem; gap: 2.5rem; }
+    .photo { order: -1; }
+    .resources { max-width: none; }
+    nav { gap: 1rem; }
+    .links { gap: 1rem 1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="#" aria-label="BUSS home">
+      <!-- Placeholder logo mark (DNA helix). Replace with your own logo image if you have one. -->
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M9 3c0 8 14 8 14 13S9 24 9 29M23 3c0 8-14 8-14 13s14 8 14 13M11 8h10M11 24h10M10 16h12"/>
+      </svg>
+      BUSS
+    </a>
+    <div class="links">
+      <a href="#">Events</a>
+      <a href="#">Council</a>
+      <div class="dropdown">
+        <a href="#" aria-haspopup="true">Subcommittees &#9662;</a>
+        <div class="menu">
+          <a href="#">Academic</a>
+          <a href="#">Social</a>
+          <a href="#">Outreach</a>
+          <a href="#">Design Teams</a>
         </div>
+      </div>
+      <a href="#">Alumni</a>
+      <a href="#">Partnership</a>
+      <a href="#">Join BUSS</a>
+      <a href="#">Resources</a>
+    </div>
+  </nav>
+</header>
+
+<div class="banner">New council pictures coming soon!</div>
+
+<div class="hero-wrap">
+  <!-- Faint science doodles in the background -->
+  <svg class="doodle d1" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6c0 14 24 14 24 26S20 44 20 58M44 6c0 14-24 14-24 26s24 14 24 26M24 14h16M24 50h16M22 32h20"/></svg>
+  <svg class="doodle d2" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="32" cy="32" r="24"/><circle cx="26" cy="28" r="7"/><circle cx="42" cy="40" r="4"/></svg>
+  <svg class="doodle d3" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6h16M28 6v18L12 52a5 5 0 0 0 4 8h32a5 5 0 0 0 4-8L36 24V6M20 42h24"/></svg>
+  <svg class="doodle d4" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M4 32h12l6-16 10 32 8-24 4 8h16"/></svg>
+
+  <main class="hero">
+    <div>
+      <h1>We are <span>BUSS!</span></h1>
+      <p class="intro">
+        The Bioengineering Undergraduate Student Society (BUSS) is the student council that supports bioengineering students in their
+        <strong>academic</strong>, <strong>technical</strong>, <strong>social</strong> and <strong>professional</strong> growth.
+      </p>
+      <h2 class="label">Popular resources</h2>
+      <div class="resources">
+        <a href="#">BUSS Events</a>
+        <a href="#">Study Room Booking</a>
+        <a href="#">Feedback Form</a>
+        <a href="#">Partner with BUSS</a>
+      </div>
     </div>
 
-        <!--- Jumbotron -->
-        <div class="continer-fluid">
-            <div class="row jumbotron">
+    <!-- Put your team photo at img/team.jpg (or change the path below) -->
+    <div class="photo">
+      Add your team photo here<br>(img/team.jpg)
+      <img src="img/team.jpg" alt="The BUSS council" onerror="this.remove()">
+    </div>
+  </main>
+</div>
 
-                <div class"col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                    <p class="lead">See our latest news on Facebook!
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                    <a href="https://www.facebook.com/BUSSMcGill" width="100%">  <button type="button" class="btn btn-outline-primary">Connect </button> </a>
-                </div>
+<section class="what">
+  <div class="what-inner">
+    <h2>What we do</h2>
+    <p class="sub">From study sessions to industry nights, we are here to make the bioengineering experience better for everyone.</p>
+    <div class="cards">
+      <div class="card"><h3>Academic</h3><p>Study help, course advice and peer support throughout the year.</p></div>
+      <div class="card"><h3>Technical</h3><p>Workshops and design projects that turn classroom ideas into real builds.</p></div>
+      <div class="card"><h3>Social</h3><p>Events that bring students together, from game nights to end-of-term parties.</p></div>
+      <div class="card"><h3>Professional</h3><p>Career panels, alumni connections and industry partnerships.</p></div>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <div class="foot">
+    <a class="logo" href="#">BUSS</a>
+    <nav>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+  <div class="copy">&copy; 2026 Bioengineering Undergraduate Student Society. All rights reserved.</div>
+</footer>
 
-            </div>
-        </div>
-        <!--- Welcome Section -->
-        <div class="container-fluid padding">
-            <div class="row welcome">
-                <div class="col-12">
-                    <h2 class="display-5 text-center"> About Us</h2>
-                </div>
-                <hr>
-                <div class="col-12">
-                    <p style="text-align: justify; margin: 0 10px">  
-                        BUSS is the central body through which all bioengineering student activities are organized. 
-                        Our executive council is composed of 14 dynamic and dedicated bioengineering undergraduate students that are each as unique as the next. 
-                        We are all connected through a common desire to enhance the experience of all students within the bioengineering program.
-                        Dedicated to the bioengineering experience at McGill, we try to make our small department into what we believe it to be: a close knit family of hard-working students. 
-                    </p>
-
-                </div>
-            </div>
-
-        </div>
-
-         <!--- Our Goal -->
-        <div class="container-fluid padding">
-            <div class="row welcome">
-                <div class="col-12">
-                    <h2 class="display-5 text-center"> Our Goal</h2>
-                </div>
-                <hr>
-                <div class="col-12">
-                    <p style="text-align: justify; margin: 0 10px"> 
-                        The main goal of BUSS is to make the bioengineering students’ experience as pleasant as possible.
-                        Our responsibilities include organizing and promoting social events, connecting students with companies
-                        and research labs, facilitating student-teacher communication and course feedback, mentorship programs, 
-                        and providing mental health resources.
-                    </p>
-
-                </div>
-            </div>
-
-        </div>
-
-
-
-        <!-- Google Calendar-->
-        <div class= "container-fluid padding" id="calendar">
-            <div class = "col-md-12 col-lg-12">
-                <center>
-                    <br>
-                    <h1> <b> Upcoming Events </b> </h1>
-                    <iframe src="https://calendar.google.com/calendar/embed?src=mcgilleus.ca_dmb58tvdqta3udepn31sa7o1ac%40group.calendar.google.com&ctz=America%2FToronto" style="border-width: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-                </center>
-            </div>
-        </div> 
-
-        <!--- Two Column Section -->
-
-        
-        <!--- Connect -->
-        <div class="container-fluid padding">
-            <div class="row text-center padding">
-                <div class="col-12">
-                    <h2 style="margin-top:30px;"> Contact Us </h2>
-                </div>
-                
-                <div class="col-12 social padding">
-                    <a href="https://www.facebook.com/BUSSMcGill"> <i class="fab fa-facebook"></i> </a>
-                    <a href="https://www.instagram.com/buss.mcgill/"> <i class="fab fa-instagram"> </i></a>
-                    <a href="mailto:buss.vpcomm@mcgilleus.ca"> <i class="fa fa-envelope"> </i></a>
-                </div>
-            </div>	
-        </div>
-        
-        <hr width="75%">
-        
-      
-
-        <!--- Footer -->
-        <footer>
-            <div class="container-fluid padding">
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <p></p>
-                        <img src="img/BUSS-Crest.svg" width="50%" height="auto" style= "filter:grayscale(100%);"> 
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <br>
-                        <br>
-                        <br>
-                        <p> McGill Bioengineering </p>
-                        <p> Undergraduate Students' Society </p>
-                        <hr class="light">
-                        <p>buss.vpcomm@mcgilleus.ca</p>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <p></p>
-                        <img src="img/BUSS-Crest.svg" width="50%" height="auto" style= "filter:grayscale(100%);"> 
-                    </div>
-                        <!---
-                        <p align=right style= "font-size:60%">Designed by President <a href=https://www.linkedin.com/in/ameer-nizami-5b6184107/> Ameer </a> 2017-2018</p>
-                        --->
-            
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
-
-
