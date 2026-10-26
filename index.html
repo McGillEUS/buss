@@ -143,13 +143,22 @@
   .contact-links { display: flex; gap: .8rem; flex-wrap: wrap; }
 
   /* ---------- Footer ---------- */
-  footer { background: #231b1a; color: #d8cfcd; }
-  .foot { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-  .foot img { height: 60px; width: auto; display: block; background: #fff; padding: 6px; border-radius: 12px; }
-  .foot .who { text-align: center; line-height: 1.6; }
+  footer { background: #231b1a; color: #d8cfcd; border-top: 4px solid var(--red); }
+  .foot { max-width: 1200px; margin: 0 auto; padding: 3.5rem 1.5rem 2.5rem; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 2.5rem; }
+  .foot-brand img { height: 64px; width: auto; display: block; background: #fff; padding: 7px; border-radius: 14px; margin-bottom: 1rem; }
+  .foot-brand p { margin: 0; line-height: 1.6; max-width: 22em; font-size: .95rem; }
+  .foot h4 { margin: 0 0 1rem; color: #fff; font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+  .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+  .foot a { transition: color .2s ease; }
   .foot a:hover { color: #ff9a8a; }
-  .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-  .copy { text-align: center; font-size: .85rem; padding: 0 1rem 1.6rem; color: #a99d9a; }
+  .social-row { display: flex; gap: .6rem; margin-top: 1.1rem; }
+  .icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.22); display: grid; place-items: center; color: #fff; transition: background .2s ease, border-color .2s ease, transform .15s ease; }
+  .icon-btn:hover { background: var(--red); border-color: var(--red); color: #fff; transform: translateY(-2px); }
+  .icon-btn svg { width: 20px; height: 20px; }
+  .copy { max-width: 1200px; margin: 0 auto; padding: 1.3rem 1.5rem 1.8rem; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem; font-size: .85rem; color: #a99d9a; }
+  .copy a:hover { color: #ff9a8a; }
+  @media (max-width: 900px) { .foot { grid-template-columns: 1fr 1fr; } .foot-brand { grid-column: 1 / -1; } }
+  @media (max-width: 540px) { .foot { grid-template-columns: 1fr; } .copy { flex-direction: column; } }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
@@ -161,7 +170,6 @@
     .links.open { display: flex; }
     .menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding: 0 0 0 .8rem; }
     .join { margin: .6rem 0 0; text-align: center; }
-    .foot { justify-content: center; }
   }
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
@@ -206,7 +214,7 @@
   <main class="hero">
     <div>
       <p class="eyebrow">McGill Bioengineering Undergraduate Students’ Society</p>
-      <h1>We are <span>BUSS!</span></h1>
+      <h1>Meet <span>BUSS!</span></h1>
       <p class="intro">
         BUSS is the central body through which <strong>all bioengineering student activities</strong> are organized. We are dedicated to making the bioengineering experience at McGill a <strong>close-knit family</strong> of hard-working students.
       </p>
@@ -282,18 +290,48 @@
 
 <footer>
   <div class="foot">
-    <a href="index.html" aria-label="BUSS home"><img src="img/BUSS-Crest.svg" alt="BUSS crest"></a>
-    <div class="who">
-      McGill Bioengineering<br>Undergraduate Students’ Society<br>
-      <a href="mailto:buss.vpcomm@mcgilleus.ca">buss.vpcomm@mcgilleus.ca</a>
+    <div class="foot-brand">
+      <a href="index.html" aria-label="BUSS home"><img src="img/BUSS-Crest.svg" alt="BUSS crest"></a>
+      <p>McGill Bioengineering Undergraduate Students’ Society. Supporting bioengineering students academically, socially, and professionally.</p>
     </div>
-    <div class="foot-links">
-      <a href="https://www.facebook.com/BUSSMcGill" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/buss.mcgill/" target="_blank" rel="noopener">Instagram</a>
-      <a href="#contact">Contact</a>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="council.html">Council</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="Getting%20Involved.html">Getting Involved</a></li>
+        <li><a href="Internships.html">Opportunities</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://drive.google.com/file/d/17HVtnoPWj_0WoyVrjVng5ag5OF-lAIxV/view?usp=sharing" target="_blank" rel="noopener">Guidebook</a></li>
+        <li><a href="resources.html">Academic</a></li>
+        <li><a href="mental.html">Mental Health</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="mailto:buss.vpcomm@mcgilleus.ca">buss.vpcomm@mcgilleus.ca</a>
+      <div class="social-row">
+        <a class="icon-btn" href="https://www.facebook.com/BUSSMcGill" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5v4h3v7h4v-7h3l1-4h-4V7.5A.5.5 0 0 1 12.5 7H15z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://www.instagram.com/buss.mcgill/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:buss.vpcomm@mcgilleus.ca" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="copy">&copy; 2026 McGill Bioengineering Undergraduate Students’ Society. All rights reserved.</div>
+  <div class="copy">
+    <span>&copy; 2026 McGill Bioengineering Undergraduate Students’ Society. All rights reserved.</span>
+    <a href="#">Back to top &uarr;</a>
+  </div>
 </footer>
 
 <script>
