@@ -1,306 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Events - McGill Bioengineering Undergraduate Students' Society</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <span>
-            <img
-              src="img/BUSS-Crest.svg"
-              style="height: 100px"
-              class="responsive"
-            />
-            <img
-              src="img/BUSS-Logo.svg"
-              style="width: 100px; height: 100px"
-              class="responsive"
-            />
-          </span>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="council.html">Council</a>
-            </li>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events - McGill Bioengineering Undergraduate Students’ Society</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d42e12;
+    --red-dark: #aa250d;
+    --red-tint: #fdeeeb;
+    --ink: #1c1c1c;
+    --ink-soft: #5b5b5b;
+    --line: #eadedb;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  section { scroll-margin-top: 84px; }
+  body {
+    margin: 0;
+    font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
 
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Resources
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a
-                  class="dropdown-item"
-                  href="https://drive.google.com/file/d/17HVtnoPWj_0WoyVrjVng5ag5OF-lAIxV/view?usp=sharing"
-                  >Guidebook</a
-                >
-                <a class="dropdown-item" href="resources.html">Academic</a>
-                <a class="dropdown-item" href="mental.html">Mental Health</a>
-              </div>
-            </li>
+  /* ---------- Navbar ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+    border-top: 4px solid var(--red);
+    box-shadow: 0 2px 14px rgba(0,0,0,.06);
+  }
+  nav {
+    max-width: 1200px; margin: 0 auto; padding: .55rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  }
+  .logo { display: flex; align-items: center; gap: .6rem; }
+  .logo img { height: 52px; width: auto; display: block; }
+  .links { display: flex; align-items: center; gap: .25rem; }
+  .links > a:not(.join), .dropdown > a {
+    font-weight: 500; font-size: .97rem; padding: .5rem .85rem; border-radius: 999px;
+    transition: background .2s ease, color .2s ease; display: block;
+  }
+  .links > a:not(.join):hover, .dropdown > a:hover { background: var(--red-tint); color: var(--red); }
+  .links > a.active { color: var(--red); }
+  .join { background: var(--red); color: #fff; font-weight: 600; padding: .55rem 1.3rem; border-radius: 999px; margin-left: .6rem; transition: background .2s ease, transform .15s ease; }
+  .join:hover { background: var(--red-dark); transform: translateY(-1px); }
 
-            <li class="nav-item">
-              <a class="nav-link" href="events.html">Events</a>
-            </li>
+  .dropdown { position: relative; }
+  .menu {
+    position: absolute; top: 100%; left: 0; min-width: 190px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.1); padding: .5rem;
+    opacity: 0; visibility: hidden; transform: translateY(6px); transition: all .2s ease;
+  }
+  .dropdown:hover .menu, .dropdown:focus-within .menu { opacity: 1; visibility: visible; transform: none; }
+  .menu a { display: block; padding: .5rem .8rem; border-radius: 8px; font-size: .95rem; }
+  .menu a:hover { background: var(--red-tint); color: var(--red); }
+  .burger { display: none; background: none; border: 1px solid var(--line); border-radius: 10px; font-size: 1.4rem; line-height: 1; padding: .4rem .7rem; color: var(--red); cursor: pointer; }
 
-            <li class="nav-item">
-              <a class="nav-link" href="Getting Involved.html">
-                Getting Involved
-              </a>
-            </li>
+  /* ---------- Hero ---------- */
+  .hero-wrap { position: relative; overflow: hidden; }
+  .doodle { position: absolute; color: var(--red); opacity: .09; pointer-events: none; }
+  .d1 { top: 40px; left: 3%; width: 110px; transform: rotate(-12deg); }
+  .d2 { top: 28%; left: 44%; width: 70px; transform: rotate(10deg); }
+  .d3 { bottom: 30px; right: 3%; width: 120px; transform: rotate(14deg); }
+  .d4 { bottom: 40px; left: 2%; width: 80px; }
 
-            <li class="nav-item">
-              <a class="nav-link" href="Internships.html"> Opportunities </a>
-            </li>
-          </ul>
+  .hero {
+    position: relative;
+    max-width: 1200px; margin: 0 auto; padding: 4.5rem 1.5rem 5rem;
+    display: grid; grid-template-columns: 1fr 1.25fr; gap: 3.5rem; align-items: center;
+  }
+  .eyebrow { color: var(--red); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; font-size: .85rem; margin: 0 0 .9rem; }
+  h1 {
+    font-size: clamp(3.2rem, 8vw, 6rem); line-height: .98; margin: 0 0 1.6rem;
+    font-weight: 800; letter-spacing: -.02em;
+  }
+  h1 span { color: var(--red); display: block; }
+  .intro { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2.2rem; max-width: 34em; }
+  .intro strong { color: var(--ink); font-weight: 600; }
+
+  h2.label {
+    display: inline-block; font-size: 1.1rem; font-weight: 600; margin: 0 0 1rem;
+    padding-bottom: .25rem; border-bottom: 3px solid var(--red);
+  }
+  .resources { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; max-width: 480px; }
+  .resources a {
+    background: var(--red); color: #fff; font-weight: 500; text-align: center;
+    padding: 1.25rem .9rem; border-radius: 12px; line-height: 1.3;
+    display: flex; align-items: center; justify-content: center; min-height: 82px;
+    transition: transform .18s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .resources a:hover { background: var(--red-dark); transform: translateY(-3px); box-shadow: 0 10px 22px rgba(212,46,18,.28); }
+
+  .photo {
+    position: relative; aspect-ratio: 3 / 2; border-radius: 26px; overflow: hidden;
+    border: 3px solid var(--red-tint);
+    box-shadow: 0 24px 50px rgba(212,46,18,.14), 0 4px 14px rgba(0,0,0,.08);
+    background: linear-gradient(135deg, #fff1ee, #fbd9d2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--red-dark); text-align: center; padding: 1rem; font-weight: 500;
+  }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Content sections ---------- */
+  .what { background: #fff; border-top: 1px solid var(--line); }
+  .what.tint { background: #fffaf9; }
+  .what-inner { max-width: 1200px; margin: 0 auto; padding: 4.5rem 1.5rem; }
+  .what h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 .4rem; font-weight: 700; letter-spacing: -.01em; }
+  .what h2::after { content: ""; display: block; width: 56px; height: 4px; background: var(--red); border-radius: 2px; margin-top: .7rem; }
+  .what p.sub { color: var(--ink-soft); margin: 1rem 0 2.2rem; max-width: 40em; }
+  .what p.long { max-width: 56em; font-size: 1.05rem; margin-bottom: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+  .card {
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: #fff;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(212,46,18,.1); }
+  .card h3 { margin: 0 0 .4rem; font-size: 1.15rem; color: var(--red); }
+  .card p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+
+  .btn { display: inline-block; background: var(--red); color: #fff; padding: .8rem 1.7rem; border-radius: 999px; font-weight: 600; transition: background .2s ease, transform .15s ease; }
+  .btn:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+  .news { background: var(--red); color: #fff; }
+  .news-inner { max-width: 1200px; margin: 0 auto; padding: 1.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .news p { margin: 0; font-size: 1.25rem; font-weight: 600; }
+  .news .btn { background: #fff; color: var(--red); }
+  .news .btn:hover { background: var(--red-tint); }
+
+  .cal { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.06); }
+  .cal iframe { width: 100%; height: 600px; border: 0; display: block; }
+  .contact-links { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+  /* ---------- Footer ---------- */
+  footer { background: #231b1a; color: #d8cfcd; }
+  .foot { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .foot img { height: 60px; width: auto; display: block; background: #fff; padding: 6px; border-radius: 12px; }
+  .foot .who { text-align: center; line-height: 1.6; }
+  .foot a:hover { color: #ff9a8a; }
+  .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  .copy { text-align: center; font-size: .85rem; padding: 0 1rem 1.6rem; color: #a99d9a; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 3rem; gap: 2.5rem; }
+    .photo { order: -1; }
+    .resources { max-width: none; }
+    .burger { display: block; }
+    .links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: #fff; padding: .8rem 1.5rem 1.4rem; border-bottom: 1px solid var(--line); box-shadow: 0 14px 24px rgba(0,0,0,.08); }
+    .links.open { display: flex; }
+    .menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding: 0 0 0 .8rem; }
+    .join { margin: .6rem 0 0; text-align: center; }
+    .foot { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Getting Involved page ---------- */
+  [id] { scroll-margin-top: 84px; }
+  .page-hero { background: linear-gradient(180deg, #fff3f0, #fff); border-bottom: 1px solid var(--line); }
+  .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+  .page-hero h1 { font-size: clamp(2.6rem, 7vw, 4.5rem); margin: 0 0 1rem; }
+  .page-hero p.lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 36em; margin: 0; }
+  .chips { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .chips a { border: 1px solid var(--line); background: #fff; padding: .45rem 1rem; border-radius: 999px; font-weight: 500; font-size: .92rem; transition: all .2s ease; }
+  .chips a:hover { border-color: var(--red); color: var(--red); background: var(--red-tint); }
+  .callout { background: var(--red-tint); border: 1px solid #f6cfc7; border-radius: 22px; padding: 2.2rem; max-width: 56em; }
+  .callout p { margin: 0 0 1rem; font-size: 1.05rem; color: var(--ink-soft); }
+  .callout p:last-of-type { margin-bottom: 0; }
+  .callout a.mail { color: var(--red); font-weight: 600; border-bottom: 2px solid var(--red); }
+  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+  .split p { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
+  .cards.wide { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .cards.wide .card p { font-size: 1rem; line-height: 1.7; }
+  .btn.mt { margin-top: 1.4rem; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 1.8rem; } }
+  .features { display: grid; gap: 4.5rem; margin-top: 2.5rem; }
+  .features h3 { font-size: 1.7rem; margin: 0 0 1rem; color: var(--ink); font-weight: 700; }
+  .features p { margin: 0 0 1rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .split.rev .photo { order: 2; }
+  @media (max-width: 900px) { .split.rev .photo { order: 0; } .features { gap: 3rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="index.html" aria-label="BUSS home">
+      <img src="img/BUSS-Crest.svg" alt="BUSS crest">
+      <img src="img/BUSS-Logo.svg" alt="BUSS logo">
+    </a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <div class="links" id="links">
+      <a href="index.html">Home</a>
+      <a href="council.html">Council</a>
+      <div class="dropdown">
+        <a href="resources.html" aria-haspopup="true">Resources &#9662;</a>
+        <div class="menu">
+          <a href="https://drive.google.com/file/d/17HVtnoPWj_0WoyVrjVng5ag5OF-lAIxV/view?usp=sharing" target="_blank" rel="noopener">Guidebook</a>
+          <a href="resources.html">Academic</a>
+          <a href="mental.html">Mental Health</a>
         </div>
       </div>
-    </nav>
-
-    <!-- Title -->
-    <div class="container fluid">
-      <div class="row text-center welcome">
-        <div class="col-md-12">
-          <h1>BioEng Events</h1>
-        </div>
-      </div>
+      <a class="active" href="events.html">Events</a>
+      <a href="Internships.html">Opportunities</a>
+      <a class="join" href="Getting%20Involved.html">Getting Involved</a>
     </div>
+  </nav>
+</header>
 
-    <hr width="75%">
-          
-    <div class= "container-fluid padding" id="calendar">
-      <div class = "col-md-12 col-lg-12">
-        <center>
-          <h1> <b> Upcoming Events </b> </h1>
-            <iframe src="https://calendar.google.com/calendar/embed?src=mcgilleus.ca_dmb58tvdqta3udepn31sa7o1ac%40group.calendar.google.com&ctz=America%2FToronto" 
-                    style="border-width:0" width="100%" height="600" frameborder="0" height></iframe>
-         </center>
-       </div>
-     </div> 
-          
-
-    <hr width="75%" />
-
-    <div class="container-fluid padding" id="calendar">
-      <div class="col-md-12 col-lg-12">
-        <center>
-          <h1><b> Our Favorites </b></h1>
-        </center>
-      </div>
-    </div>
-
-    <div class="container fluid">
-      <div class="row padding">
-        <div class="col-md-6 text-center">
-          <img src="img/Website Photos/Banquet.JPG" class="img-fluid" />
-        </div>
-        <div class="col-md-6 padding">
-          <br>
-          <h2>BUSS Banquet</h2>
-          <p>
-            Before the end of each semester, bioengineering students dress up in
-            their finest attire and get together to eat and drink. It's a way of
-            celebrating the end of the semester and realizing that we are almost
-            done. Afterwards, students have the option of joining other
-            departments at an EUS wide afterparty.
-          </p>
-          <div>
-            <div class="icon">
-              <i class="fas fa-utensils"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr width="75%" />
-
-    <div class="container fluid">
-      <div class="row padding">
-        <div class="col-md-6 padding">
-          <br>
-          <h2>Lab Tours</h2>
-          <br>
-          <p>A collection of videos showcasing our department's research labs! </p>
-          
-          <a href="https://www.youtube.com/channel/UCcn5KY4DPXArk0QgTkhN2LA/" class= "btn btn-primary btn-lg"> Find them here. </a>
-          
-          <div class="icon">
-            <i class="fa fa-flask"></i>
-          </div>
-        </div>
-        <div class="col-md-6 text-center">
-          <img src="img/Website Photos/Lab.JPG" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-
-    <hr width="75%" />
-
-    <div class="container fluid">
-      <div class="row padding">
-        <div class="col-md-6 text-center">
-          <img src="img/Website Photos/buss ride.JPG" class="img-fluid" />
-        </div>
-        <div class="col-md-6 padding">
-          <br>
-          <h2>BUSS Ride</h2>
-          <p>
-            A multi-day trip to another city to explore a biotech center outside
-            of Montreal. Includes industry tours, lab tours, visits with
-            bioengineering students from other schools, and lots of bonding with
-            the department!
-          </p>
-          <div>
-            <div class="icon">
-              <i class="fa fa-bus"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr width="75%" />
-
-    <div class="container fluid">
-      <div class="row padding">
-        <div class="col-md-6 padding">
-          <br>
-          <h2>E-Week</h2>
-          <p>
-            E-week is an EUS wide event that takes place the first week of the
-            winter semester. It is sort of like a winter frosh for engineers.
-            All engineering departments are at war with each other and
-            participate in fun events and challenges. In the end, only one
-            department wins. Will this be BUSS' year?
-          </p>
-        <div class="icon">
-            <i class="fas fa-beer"></i>
-        </div>
-      </div>
-        <div class="col-md-6 text-center">
-          <img src="img/Website Photos/BIOWeek.JPG" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-
-    <hr width="75%" />
-
-    <div class="container fluid">
-      <div class="row padding">
-        <div class="col-md-6 text-center">
-          <img src="img/Website Photos/CUBEC.JPG" class="img-fluid" />
-        </div>
-        <div class="col-md-6 padding">
-          <br>
-          <h2>CUBEC</h2>
-          <p>
-            The biomedical engineering discipline is a relatively new 
-            field that is full of exciting opportunities and boasts a large 
-            variety of career options in academia and industry. Students in 
-            biomedical engineering have a plethora of potential career paths 
-            to follow post-graduation, yet, many students feel that they lack 
-            knowledge about what these opportunities may be and how one could become involved.            
-          </p>
-          <p>
-            The Canadian Undergraduate Biomedical Engineering Conference (CUBEC) 
-            is the first large scale event dedicated to connecting undergraduate 
-            biomedical engineering students across Canada. CUBEC began as a collaboration
-            between BUSS at McGill and BMEUS at UBC in 2020, providing a platform 
-            for various academic research groups, industry leaders, and start-up
-            companies to highlight their activities. CUBEC's goal is to provide
-            attendees with the necessary tools needed to make decisions about 
-            potential career paths through national conferences,  
-            networking events,  industry nights,  and career workshops.
-          </p>
-        </div> 
-        <div class="col-12 social padding">
-          <div style="text-align:center">  
-            <a href="https://www.facebook.com/CUBEC2022"> <i class="fab fa-facebook"></i> </a>
-            <a href="https://www.cubec.info/"> <i class="fa fa-globe"> </i></a>
-            <a href="mailto:cubec.chair@gmail.com"> <i class="fa fa-envelope"> </i></a>
-          </div>
-        </div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">Events</p>
+    <h1>BioEng <span style="display:inline">Events</span></h1>
+    <div class="chips">
+      <a href="#calendar">Upcoming Events</a>
+      <a href="#banquet">BUSS Banquet</a>
+      <a href="#lab-tours">Lab Tours</a>
+      <a href="#ride">BUSS Ride</a>
+      <a href="#eweek">E-Week</a>
+      <a href="#cubec">CUBEC</a>
     </div>
   </div>
-    
-        
-    <hr width="75%">
-    
+</div>
 
-    <!--- Footer -->
-    <footer>
-      <div class="container-fluid padding">
-        <div class="row text-center">
-          <div class="col-md-4">
-            <p></p>
-            <img
-              src="img/BUSS-Crest.svg"
-              width="50%"
-              height="auto"
-              style="filter: grayscale(100%)"
-            />
-          </div>
+<section class="what" id="calendar">
+  <div class="what-inner">
+    <h2>Upcoming Events</h2>
+    <p class="sub">All BUSS events and important dates in one calendar.</p>
+    <div class="cal">
+      <iframe src="https://calendar.google.com/calendar/embed?src=mcgilleus.ca_dmb58tvdqta3udepn31sa7o1ac%40group.calendar.google.com&amp;ctz=America%2FToronto" title="BUSS events calendar" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
 
-          <div class="col-md-4">
-            <br>
-            <br>
-            <br>
-            <p> McGill Bioengineering </p>
-            <p> Undergraduate Students' Society </p>
-            <hr class="light" />
-            <p>buss.vpcomm@mcgilleus.ca</p>
-          </div>
-
-          <div class="col-md-4">
-            <p></p>
-            <img
-              src="img/BUSS-Crest.svg"
-              width="50%"
-              height="auto"
-              style="filter: grayscale(100%)"
-            />
-          </div>
-          <!---
-                    <p align=right style= "font-size:60%">Designed by President <a href=https://www.linkedin.com/in/ameer-nizami-5b6184107/> Ameer </a> 2017-2018</p>
-                    --->
-        </div>
+<section class="what tint" id="favorites">
+  <div class="what-inner">
+    <h2>Our Favorites</h2>
+    <div class="features">
+    <div class="split" id="banquet">
+      <div class="photo">
+        BUSS Banquet
+        <img src="img/Website%20Photos/Banquet.JPG" alt="BUSS Banquet" onerror="this.remove()">
       </div>
-    </footer>
-  </body>
+      <div>
+        <h3>BUSS Banquet</h3>
+          <p>Before the end of each semester, bioengineering students dress up in their finest attire and get together to eat and drink. It’s a way of celebrating the end of the semester and realizing that we are almost done. Afterwards, students have the option of joining other departments at an EUS wide afterparty.</p>
+          
+      </div>
+    </div>
+    <div class="split rev" id="lab-tours">
+      <div class="photo">
+        Lab Tours
+        <img src="img/Website%20Photos/Lab.JPG" alt="Lab tours" onerror="this.remove()">
+      </div>
+      <div>
+        <h3>Lab Tours</h3>
+          <p>A collection of videos showcasing our department’s research labs!</p>
+          <a class="btn" href="https://www.youtube.com/channel/UCcn5KY4DPXArk0QgTkhN2LA/" target="_blank" rel="noopener">Find them here</a>
+      </div>
+    </div>
+    <div class="split" id="ride">
+      <div class="photo">
+        BUSS Ride
+        <img src="img/Website%20Photos/buss%20ride.JPG" alt="BUSS Ride" onerror="this.remove()">
+      </div>
+      <div>
+        <h3>BUSS Ride</h3>
+          <p>A multi-day trip to another city to explore a biotech center outside of Montreal. Includes industry tours, lab tours, visits with bioengineering students from other schools, and lots of bonding with the department!</p>
+          
+      </div>
+    </div>
+    <div class="split rev" id="eweek">
+      <div class="photo">
+        E-Week
+        <img src="img/Website%20Photos/BIOWeek.JPG" alt="E-Week" onerror="this.remove()">
+      </div>
+      <div>
+        <h3>E-Week</h3>
+          <p>E-week is an EUS wide event that takes place the first week of the winter semester. It is sort of like a winter frosh for engineers. All engineering departments are at war with each other and participate in fun events and challenges. In the end, only one department wins. Will this be BUSS’ year?</p>
+          
+      </div>
+    </div>
+    <div class="split" id="cubec">
+      <div class="photo">
+        CUBEC
+        <img src="img/Website%20Photos/CUBEC.JPG" alt="CUBEC" onerror="this.remove()">
+      </div>
+      <div>
+        <h3>CUBEC</h3>
+          <p>The biomedical engineering discipline is a relatively new field that is full of exciting opportunities and boasts a large variety of career options in academia and industry. Students in biomedical engineering have a plethora of potential career paths to follow post-graduation, yet, many students feel that they lack knowledge about what these opportunities may be and how one could become involved.</p>
+          <p>The Canadian Undergraduate Biomedical Engineering Conference (CUBEC) is the first large scale event dedicated to connecting undergraduate biomedical engineering students across Canada. CUBEC began as a collaboration between BUSS at McGill and BMEUS at UBC in 2020, providing a platform for various academic research groups, industry leaders, and start-up companies to highlight their activities. CUBEC’s goal is to provide attendees with the necessary tools needed to make decisions about potential career paths through national conferences, networking events, industry nights, and career workshops.</p>
+          <div class="contact-links"><a class="btn" href="https://www.facebook.com/CUBEC2022" target="_blank" rel="noopener">Facebook</a><a class="btn" href="https://www.cubec.info/" target="_blank" rel="noopener">Website</a><a class="btn" href="mailto:cubec.chair@gmail.com">Email</a></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <a href="index.html" aria-label="BUSS home"><img src="img/BUSS-Crest.svg" alt="BUSS crest"></a>
+    <div class="who">
+      McGill Bioengineering<br>Undergraduate Students’ Society<br>
+      <a href="mailto:buss.vpcomm@mcgilleus.ca">buss.vpcomm@mcgilleus.ca</a>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.facebook.com/BUSSMcGill" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/buss.mcgill/" target="_blank" rel="noopener">Instagram</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 McGill Bioengineering Undergraduate Students’ Society. All rights reserved.</div>
+</footer>
+
+<script>
+  var burger = document.querySelector('.burger'), links = document.getElementById('links');
+  burger.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }
+  });
+</script>
+</body>
 </html>
